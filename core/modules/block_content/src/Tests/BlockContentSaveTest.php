@@ -33,10 +33,10 @@ class BlockContentSaveTest extends BlockContentTestBase {
   }
 
   /**
-   * Checks whether custom block IDs are saved properly during an import.
+   * Checks whether block content IDs are saved properly during an import.
    */
   public function testImport() {
-    // Custom block ID must be a number that is not in the database.
+    // Block content ID must be a number that is not in the database.
     $max_id = db_query('SELECT MAX(id) FROM {block_content}')->fetchField();
     $test_id = $max_id + mt_rand(1000, 1000000);
     $info = $this->randomMachineName(8);
@@ -55,7 +55,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
 
     // Test the import saved.
     $block_by_id = BlockContent::load($test_id);
-    $this->assertTrue($block_by_id, 'Custom block load by block ID.');
+    $this->assertTrue($block_by_id, 'Block content load by block ID.');
     $this->assertIdentical($block_by_id->body->value, $block_array['body']['value']);
   }
 
@@ -81,7 +81,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
     // block_content_test_block_content_update() determine changes and change the
     // title as well as programatically set the 'changed' timestamp.
     $this->assertEqual($block->label(), 'updated_presave_update', 'Changes have been determined.');
-    $this->assertEqual($block->getChangedTime(), 979534800, 'Saving a custom block uses "changed" timestamp set in presave hook.');
+    $this->assertEqual($block->getChangedTime(), 979534800, 'Saving a block content uses "changed" timestamp set in presave hook.');
 
     // Test the static block load cache to be cleared.
     $block = BlockContent::load($block->id());
@@ -101,7 +101,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
     // block_content_test_block_content_insert() triggers a save on insert if the
     // title equals 'new'.
     $block = $this->createBlockContent('new');
-    $this->assertEqual($block->label(), 'BlockContent ' . $block->id(), 'Custom block saved on block insert.');
+    $this->assertEqual($block->label(), 'BlockContent ' . $block->id(), 'Block content saved on block insert.');
   }
 
 }

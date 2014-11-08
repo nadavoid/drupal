@@ -10,7 +10,7 @@ namespace Drupal\block_content\Plugin\Derivative;
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 
 /**
- * Retrieves block plugin definitions for all custom blocks.
+ * Retrieves block plugin definitions for all block content.
  */
 class BlockContent extends DeriverBase {
   /**

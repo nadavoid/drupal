@@ -1,12 +1,12 @@
 block_content_type_add:
   route_name: block_content.type_add
-  title: 'Add custom block type'
+  title: 'Add block content type'
   appears_on:
     - block_content.type_list
 
 block_content_add_action:
   route_name: block_content.add_page
-  title: 'Add custom block'
+  title: 'Add block content'
   appears_on:
     - block.admin_display
     - block.admin_display_theme

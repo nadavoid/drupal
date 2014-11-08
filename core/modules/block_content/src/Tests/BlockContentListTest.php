@@ -10,7 +10,7 @@ namespace Drupal\block_content\Tests;
 use Drupal\simpletest\WebTestBase;
 
 /**
- * Tests the listing of custom blocks.
+ * Tests the listing of block content.
  *
  * @group block_content
  * @see \Drupal\block\BlockContentListBuilder
@@ -25,14 +25,14 @@ class BlockContentListTest extends WebTestBase {
   public static $modules = array('block', 'block_content', 'config_translation');
 
   /**
-   * Tests the custom block listing page.
+   * Tests the block content listing page.
    */
   public function testListing() {
     $this->drupalLogin($this->drupalCreateUser(array('administer blocks', 'translate configuration')));
     $this->drupalGet('admin/structure/block/block-content');
 
     // Test for the page title.
-    $this->assertTitle(t('Custom block library') . ' | Drupal');
+    $this->assertTitle(t('Block content library') . ' | Drupal');
 
     // Test for the table.
     $element = $this->xpath('//div[@class="layout-content"]//table');
@@ -51,7 +51,7 @@ class BlockContentListTest extends WebTestBase {
     $label = 'Antelope';
     $new_label = 'Albatross';
     // Add a new entity using the operations link.
-    $link_text = t('Add custom block');
+    $link_text = t('Add block content');
     $this->assertLink($link_text);
     $this->clickLink($link_text);
     $this->assertResponse(200);
@@ -82,7 +82,7 @@ class BlockContentListTest extends WebTestBase {
       $this->assertLinkByHref('block/' . $block->id());
       $this->clickLink(t('Edit'));
       $this->assertResponse(200);
-      $this->assertTitle(strip_tags(t('Edit custom block %label', array('%label' => $label)) . ' | Drupal'));
+      $this->assertTitle(strip_tags(t('Edit block content %label', array('%label' => $label)) . ' | Drupal'));
       $edit = array('info[0][value]' => $new_label);
       $this->drupalPostForm(NULL, $edit, t('Save'));
     }
@@ -92,7 +92,7 @@ class BlockContentListTest extends WebTestBase {
 
     // Confirm that once the user returns to the listing, the text of the label
     // (versus elsewhere on the page).
-    $this->assertFieldByXpath('//td', $new_label, 'Label found for updated custom block.');
+    $this->assertFieldByXpath('//td', $new_label, 'Label found for updated block content.');
 
     // Delete the added entity using the operations link.
     $this->assertLinkByHref('block/' . $block->id() . '/delete');
@@ -104,7 +104,7 @@ class BlockContentListTest extends WebTestBase {
 
     // Verify that the text of the label and machine name does not appear in
     // the list (though it may appear elsewhere on the page).
-    $this->assertNoFieldByXpath('//td', $new_label, 'No label found for deleted custom block.');
+    $this->assertNoFieldByXpath('//td', $new_label, 'No label found for deleted block content.');
 
     // Confirm that the empty text is displayed.
     $this->assertText(t('There is no Custom Block yet.'));

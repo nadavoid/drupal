@@ -14,12 +14,12 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\block_content\BlockContentInterface;
 
 /**
- * Defines the custom block entity class.
+ * Defines the block content entity class.
  *
  * @ContentEntityType(
  *   id = "block_content",
- *   label = @Translation("Custom Block"),
- *   bundle_label = @Translation("Custom Block type"),
+ *   label = @Translation("Block content"),
+ *   bundle_label = @Translation("Block content type"),
  *   handlers = {
  *     "storage" = "Drupal\Core\Entity\Sql\SqlContentEntityStorage",
  *     "storage_schema" = "Drupal\block_content\BlockContentStorageSchema",
@@ -60,9 +60,9 @@ class BlockContent extends ContentEntityBase implements BlockContentInterface {
   /**
    * The theme the block is being created in.
    *
-   * When creating a new custom block from the block library, the user is
+   * When creating a new block content from the block library, the user is
    * redirected to the configure form for that block in the given theme. The
-   * theme is stored against the block when the custom block add form is shown.
+   * theme is stored against the block when the block content add form is shown.
    *
    * @var string
    */
@@ -99,7 +99,7 @@ class BlockContent extends ContentEntityBase implements BlockContentInterface {
   public function postSave(EntityStorageInterface $storage, $update = TRUE) {
     parent::postSave($storage, $update);
 
-    // Invalidate the block cache to update custom block-based derivatives.
+    // Invalidate the block cache to update block content based derivatives.
     \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
   }
 
@@ -139,14 +139,14 @@ class BlockContent extends ContentEntityBase implements BlockContentInterface {
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['id'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Custom block ID'))
-      ->setDescription(t('The custom block ID.'))
+      ->setLabel(t('Block content ID'))
+      ->setDescription(t('The block content ID.'))
       ->setReadOnly(TRUE)
       ->setSetting('unsigned', TRUE);
 
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The custom block UUID.'))
+      ->setDescription(t('The block content UUID.'))
       ->setReadOnly(TRUE);
 
     $fields['revision_id'] = BaseFieldDefinition::create('integer')
@@ -157,7 +157,7 @@ class BlockContent extends ContentEntityBase implements BlockContentInterface {
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))
-      ->setDescription(t('The custom block language code.'))
+      ->setDescription(t('The block content language code.'))
       ->setRevisionable(TRUE);
 
     $fields['info'] = BaseFieldDefinition::create('string')
@@ -184,7 +184,7 @@ class BlockContent extends ContentEntityBase implements BlockContentInterface {
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the custom block was last edited.'))
+      ->setDescription(t('The time that the block content was last edited.'))
       ->setRevisionable(TRUE);
 
     return $fields;

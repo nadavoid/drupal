@@ -16,12 +16,12 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Form controller for the custom block edit forms.
+ * Form controller for the block content edit forms.
  */
 class BlockContentForm extends ContentEntityForm {
 
   /**
-   * The custom block storage.
+   * The block content storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
@@ -47,7 +47,7 @@ class BlockContentForm extends ContentEntityForm {
    * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
    *   The entity manager.
    * @param \Drupal\Core\Entity\EntityStorageInterface $block_content_storage
-   *   The custom block storage.
+   *   The block content storage.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager.
    */
@@ -72,7 +72,7 @@ class BlockContentForm extends ContentEntityForm {
   /**
    * Overrides \Drupal\Core\Entity\EntityForm::prepareEntity().
    *
-   * Prepares the custom block object.
+   * Prepares the block content object.
    *
    * Fills in a few default values, and then invokes hook_block_content_prepare()
    * on all modules.
@@ -96,9 +96,9 @@ class BlockContentForm extends ContentEntityForm {
     $account = $this->currentUser();
 
     if ($this->operation == 'edit') {
-      $form['#title'] = $this->t('Edit custom block %label', array('%label' => $block->label()));
+      $form['#title'] = $this->t('Edit block content %label', array('%label' => $block->label()));
     }
-    // Override the default CSS class name, since the user-defined custom block
+    // Override the default CSS class name, since the user-defined block content
     // type name in 'TYPE-block-form' potentially clashes with third-party class
     // names.
     $form['#attributes']['class'][0] = drupal_html_class('block-' . $block->bundle() . '-form');

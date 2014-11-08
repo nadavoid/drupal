@@ -51,7 +51,7 @@ abstract class BlockContentTestBase extends WebTestBase {
   }
 
   /**
-   * Creates a custom block.
+   * Creates a block content.
    *
    * @param string $title
    *   (optional) Title of block. When no value is given uses a random name.
@@ -60,7 +60,7 @@ abstract class BlockContentTestBase extends WebTestBase {
    *   (optional) Bundle name. Defaults to 'basic'.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created custom block.
+   *   Created block content.
    */
   protected function createBlockContent($title = FALSE, $bundle = 'basic') {
     $title = ($title ? : $this->randomMachineName());
@@ -75,13 +75,13 @@ abstract class BlockContentTestBase extends WebTestBase {
   }
 
   /**
-   * Creates a custom block type (bundle).
+   * Creates a block content type (bundle).
    *
    * @param string $label
    *   The block type label.
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created custom block type.
+   *   Created block content type.
    */
   protected function createBlockContentType($label) {
     $bundle = entity_create('block_content_type', array(

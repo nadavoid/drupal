@@ -11,7 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 
 /**
- * Defines a class to build a listing of custom block entities.
+ * Defines a class to build a listing of block content entities.
  *
  * @see \Drupal\block_content\Entity\BlockContent
  */

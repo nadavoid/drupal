@@ -77,7 +77,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     // Check that the block exists in the database.
     $blocks = entity_load_multiple_by_properties('block_content', array('info' => $edit['info[0][value]']));
     $block = reset($blocks);
-    $this->assertTrue($block, 'Custom Block found in database.');
+    $this->assertTrue($block, 'Block Content found in database.');
 
     // Check that attempting to create another block with the same value for
     // 'info' returns an error.
@@ -91,16 +91,16 @@ class BlockContentCreationTest extends BlockContentTestBase {
   }
 
   /**
-   * Create a default custom block.
+   * Create a default block content.
    *
-   * Creates a custom block from defaults and ensures that the 'basic block'
+   * Creates a block content from defaults and ensures that the 'basic block'
    * type is being used.
    */
   public function testDefaultBlockContentCreation() {
     $edit = array();
     $edit['info[0][value]'] = $this->randomMachineName(8);
     $edit['body[0][value]'] = $this->randomMachineName(16);
-    // Don't pass the custom block type in the url so the default is forced.
+    // Don't pass the block content type in the url so the default is forced.
     $this->drupalPostForm('block/add', $edit, t('Save'));
 
     // Check that the block has been created and that it is a basic block.
@@ -112,7 +112,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     // Check that the block exists in the database.
     $blocks = entity_load_multiple_by_properties('block_content', array('info' => $edit['info[0][value]']));
     $block = reset($blocks);
-    $this->assertTrue($block, 'Default Custom Block found in database.');
+    $this->assertTrue($block, 'Default Block Content found in database.');
   }
 
   /**
@@ -187,7 +187,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     $this->assertText(format_plural(1, 'This will also remove 1 placed block instance.', 'This will also remove @count placed block instance.'));
 
     $this->drupalPostForm(NULL, array(), 'Delete');
-    $this->assertRaw(t('Custom block %name has been deleted.', array('%name' => $edit['info[0][value]'])));
+    $this->assertRaw(t('Block content %name has been deleted.', array('%name' => $edit['info[0][value]'])));
 
     // Create another block and force the plugin cache to flush.
     $edit2 = array();

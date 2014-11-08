@@ -10,7 +10,7 @@ namespace Drupal\block_content;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
 /**
- * Provides an interface defining a custom block type entity.
+ * Provides an interface defining a block content type entity.
  */
 interface BlockContentTypeInterface extends ConfigEntityInterface {
 

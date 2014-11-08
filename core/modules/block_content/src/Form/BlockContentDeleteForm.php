@@ -12,7 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
- * Provides a confirmation form for deleting a custom block entity.
+ * Provides a confirmation form for deleting a block content entity.
  */
 class BlockContentDeleteForm extends ContentEntityConfirmFormBase {
 
@@ -56,8 +56,8 @@ class BlockContentDeleteForm extends ContentEntityConfirmFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->entity->delete();
-    drupal_set_message($this->t('Custom block %label has been deleted.', array('%label' => $this->entity->label())));
-    $this->logger('block_content')->notice('Custom block %label has been deleted.', array('%label' => $this->entity->label()));
+    drupal_set_message($this->t('Block content %label has been deleted.', array('%label' => $this->entity->label())));
+    $this->logger('block_content')->notice('Block content %label has been deleted.', array('%label' => $this->entity->label()));
     $form_state->setRedirect('block_content.list');
   }
 

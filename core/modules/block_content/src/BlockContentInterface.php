@@ -11,7 +11,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 
 /**
- * Provides an interface defining a custom block entity.
+ * Provides an interface defining a block content entity.
  */
 interface BlockContentInterface extends ContentEntityInterface, EntityChangedInterface {
 
@@ -48,9 +48,9 @@ interface BlockContentInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Sets the theme value.
    *
-   * When creating a new custom block from the block library, the user is
+   * When creating a new block content from the block library, the user is
    * redirected to the configure form for that block in the given theme. The
-   * theme is stored against the block when the custom block add form is shown.
+   * theme is stored against the block when the block content add form is shown.
    *
    * @param string $theme
    *   The theme name.
@@ -63,9 +63,9 @@ interface BlockContentInterface extends ContentEntityInterface, EntityChangedInt
   /**
    * Gets the theme value.
    *
-   * When creating a new custom block from the block library, the user is
+   * When creating a new block content from the block library, the user is
    * redirected to the configure form for that block in the given theme. The
-   * theme is stored against the block when the custom block add form is shown.
+   * theme is stored against the block when the block content add form is shown.
    *
    * @return string
    *   The theme name.
@@ -73,7 +73,7 @@ interface BlockContentInterface extends ContentEntityInterface, EntityChangedInt
   public function getTheme();
 
   /**
-   * Gets the configured instances of this custom block.
+   * Gets the configured instances of this block content.
    *
    * @return array
    *   Array of Drupal\block\Core\Plugin\Entity\Block entities.

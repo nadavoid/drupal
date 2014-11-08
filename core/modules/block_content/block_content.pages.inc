@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides page callbacks for custom blocks.
+ * Provides page callbacks for block content.
  */
 
 use Drupal\Component\Utility\Xss;
@@ -12,7 +12,7 @@ use Drupal\block_content\Entity\BlockContent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Prepares variables for a custom block type creation list templates.
+ * Prepares variables for a block content type creation list templates.
  *
  * Default template: block-content-add-list.html.twig.
  *

@@ -11,7 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\system\Tests\Entity\EntityCacheTagsTestBase;
 
 /**
- * Tests the Custom Block entity's cache tags.
+ * Tests the Block Content entity's cache tags.
  *
  * @group block_content
  */
@@ -26,7 +26,7 @@ class BlockContentCacheTagsTest extends EntityCacheTagsTestBase {
    * {@inheritdoc}
    */
   protected function createEntity() {
-    // Create a "Llama" custom block.
+    // Create a "Llama" block content.
     $block_content = entity_create('block_content', array(
       'info' => 'Llama',
       'type' => 'basic',

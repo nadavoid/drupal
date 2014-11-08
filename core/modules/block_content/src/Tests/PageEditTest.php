@@ -32,7 +32,7 @@ class PageEditTest extends BlockContentTestBase {
     // Check that the block exists in the database.
     $blocks = \Drupal::entityQuery('block_content')->condition('info', $edit['info[0][value]'])->execute();
     $block = entity_load('block_content', reset($blocks));
-    $this->assertTrue($block, 'Custom block found in database.');
+    $this->assertTrue($block, 'Block content found in database.');
 
     // Load the edit page.
     $this->drupalGet('block/' . $block->id());

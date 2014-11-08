@@ -12,7 +12,7 @@ use Drupal\content_translation\ContentTranslationHandler;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Defines the translation handler for custom blocks.
+ * Defines the translation handler for block content.
  */
 class BlockContentTranslationHandler extends ContentTranslationHandler {
 

@@ -8,7 +8,7 @@
 namespace Drupal\block_content\Tests;
 
 /**
- * Ensures that custom block type functions work correctly.
+ * Ensures that block content type functions work correctly.
  *
  * @group block_content
  */
@@ -112,7 +112,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
     // Attempt to delete the block type, which should not be allowed.
     $this->drupalGet('admin/structure/block/block-content/manage/' . $type->id() . '/delete');
     $this->assertRaw(
-      t('%label is used by 1 custom block on your site. You can not remove this block type until you have removed all of the %label blocks.', array('%label' => $type->label())),
+      t('%label is used by 1 block content on your site. You can not remove this block type until you have removed all of the %label blocks.', array('%label' => $type->label())),
       'The block type will not be deleted until all blocks of that type are removed.'
     );
     $this->assertNoText(t('This action cannot be undone.'), 'The node type deletion confirmation form is not available.');
@@ -125,7 +125,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
       t('Are you sure you want to delete %type?', array('%type' => $type->id())),
       'The block type is available for deletion.'
     );
-    $this->assertText(t('This action cannot be undone.'), 'The custom block type deletion confirmation form is available.');
+    $this->assertText(t('This action cannot be undone.'), 'The block content type deletion confirmation form is available.');
   }
 
   /**
@@ -137,7 +137,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
     $type = $this->createBlockContentType('foo');
     $type = $this->createBlockContentType('bar');
 
-    // Get the custom block storage.
+    // Get the block content storage.
     $storage = $this->container
       ->get('entity.manager')
       ->getStorage('block_content');
@@ -158,7 +158,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
         // block configure form.
         $path = $theme == $default_theme ? 'admin/structure/block' : "admin/structure/block/list/$theme";
         $this->drupalGet($path);
-        $this->clickLink(t('Add custom block'));
+        $this->clickLink(t('Add block content'));
         // The seven theme has markup inside the link, we cannot use clickLink().
         if ($default_theme == 'seven') {
           $options = $theme != $default_theme ? array('query' => array('theme' => $theme)) : array();
@@ -184,10 +184,10 @@ class BlockContentTypeTest extends BlockContentTestBase {
       }
     }
 
-    // Test that adding a block from the 'custom blocks list' doesn't send you
+    // Test that adding a block from the 'block content list' doesn't send you
     // to the block configure form.
     $this->drupalGet('admin/structure/block/block-content');
-    $this->clickLink(t('Add custom block'));
+    $this->clickLink(t('Add block content'));
     $this->clickLink('foo');
     $edit = array('info[0][value]' => $this->randomMachineName(8));
     $this->drupalPostForm(NULL, $edit, t('Save'));

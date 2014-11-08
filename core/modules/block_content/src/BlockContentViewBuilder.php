@@ -12,7 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
 
 /**
- * Render controller for custom blocks.
+ * Render controller for block content.
  */
 class BlockContentViewBuilder extends EntityViewBuilder {
 
@@ -21,7 +21,7 @@ class BlockContentViewBuilder extends EntityViewBuilder {
    */
   protected function getBuildDefaults(EntityInterface $entity, $view_mode, $langcode) {
     $build = parent::getBuildDefaults($entity, $view_mode, $langcode);
-    // The custom block will be rendered in the wrapped block template already
+    // The block content will be rendered in the wrapped block template already
     // and thus has no entity template itself.
     unset($build['#theme']);
     return $build;
@@ -32,7 +32,7 @@ class BlockContentViewBuilder extends EntityViewBuilder {
    */
   protected function alterBuild(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode, $langcode = NULL) {
     parent::alterBuild($build, $entity, $display, $view_mode, $langcode);
-    // Add contextual links for this custom block.
+    // Add contextual links for this block content.
     if (!$entity->isNew() && $view_mode == 'full') {
       $build['#contextual_links']['block_content'] = array(
         'route_parameters' => array('block_content' => $entity->id()),

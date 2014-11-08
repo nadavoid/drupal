@@ -53,7 +53,7 @@ class BlockContentTranslationUITest extends ContentTranslationUITest {
   }
 
   /**
-   * Creates a custom block.
+   * Creates a block content.
    *
    * @param string $title
    *   (optional) Title of block. When no value is given uses a random name.
@@ -63,7 +63,7 @@ class BlockContentTranslationUITest extends ContentTranslationUITest {
    *   $this->bundle. Defaults to FALSE.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created custom block.
+   *   Created block content.
    */
   protected function createBlockContent($title = FALSE, $bundle = FALSE) {
     $title = ($title ? : $this->randomMachineName());

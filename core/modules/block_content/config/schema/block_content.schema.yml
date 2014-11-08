@@ -1,8 +1,8 @@
-# Schema for the configuration files of the Custom Block module.
+# Schema for the configuration files of the Block Content module.
 
 block_content.type.*:
   type: config_entity
-  label: 'Custom block type settings'
+  label: 'Block content type settings'
   mapping:
     id:
       type: string

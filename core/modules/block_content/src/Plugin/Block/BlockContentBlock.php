@@ -18,11 +18,11 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a generic custom block type.
+ * Defines a generic block content type.
  *
  * @Block(
  *  id = "block_content",
- *  admin_label = @Translation("Custom block"),
+ *  admin_label = @Translation("block content"),
  *  category = @Translation("Custom"),
  *  deriver = "Drupal\block_content\Plugin\Derivative\BlockContent"
  * )
@@ -98,9 +98,9 @@ class BlockContentBlock extends BlockBase implements ContainerFactoryPluginInter
       'status' => TRUE,
       'info' => '',
       'view_mode' => 'full',
-      // Modify the default max age for custom block blocks: modifications made
-      // to them will automatically invalidate corresponding cache tags, thus
-      // allowing us to cache custom block blocks forever.
+      // Modify the default max age for block content: modifications made to
+      // them will automatically invalidate corresponding cache tags, thus
+      // allowing us to cache block content forever.
       'cache' => array(
         'max_age' => \Drupal\Core\Cache\Cache::PERMANENT,
       ),
@@ -128,7 +128,7 @@ class BlockContentBlock extends BlockBase implements ContainerFactoryPluginInter
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-    // Invalidate the block cache to update custom block-based derivatives.
+    // Invalidate the block cache to update block content based derivatives.
     $this->configuration['view_mode'] = $form_state->getValue('view_mode');
     $this->blockManager->clearCachedDefinitions();
   }
@@ -143,7 +143,7 @@ class BlockContentBlock extends BlockBase implements ContainerFactoryPluginInter
     }
     else {
       return array(
-        '#markup' => t('Block with uuid %uuid does not exist. <a href="!url">Add custom block</a>.', array(
+        '#markup' => t('Block with uuid %uuid does not exist. <a href="!url">Add block content</a>.', array(
           '%uuid' => $uuid,
           '!url' => $this->urlGenerator->generate('block_content.add_page')
         )),

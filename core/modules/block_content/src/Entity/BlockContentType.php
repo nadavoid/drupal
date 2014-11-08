@@ -13,11 +13,11 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\block_content\BlockContentTypeInterface;
 
 /**
- * Defines the custom block type entity.
+ * Defines the block content type entity.
  *
  * @ConfigEntityType(
  *   id = "block_content_type",
- *   label = @Translation("Custom block type"),
+ *   label = @Translation("Block content type"),
  *   handlers = {
  *     "form" = {
  *       "default" = "Drupal\block_content\BlockContentTypeForm",
@@ -43,21 +43,21 @@ use Drupal\block_content\BlockContentTypeInterface;
 class BlockContentType extends ConfigEntityBundleBase implements BlockContentTypeInterface {
 
   /**
-   * The custom block type ID.
+   * The block content type ID.
    *
    * @var string
    */
   public $id;
 
   /**
-   * The custom block type label.
+   * The block content type label.
    *
    * @var string
    */
   public $label;
 
   /**
-   * The default revision setting for custom blocks of this type.
+   * The default revision setting for block content of this type.
    *
    * @var bool
    */

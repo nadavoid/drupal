@@ -12,7 +12,7 @@ use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
- * Defines a class to build a listing of custom block type entities.
+ * Defines a class to build a listing of block content type entities.
  *
  * @see \Drupal\block_content\Entity\BlockContentType
  */
@@ -53,7 +53,7 @@ class BlockContentTypeListBuilder extends ConfigEntityListBuilder {
    * {@inheritdoc}
    */
   protected function getTitle() {
-    return $this->t('Custom block types');
+    return $this->t('Block content types');
   }
 
 }
